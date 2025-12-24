@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+Log Aggregated Search
+{% endblock %}
+
+{% block body %}
+<div class="container mt-3">
+    <h2>Log Search</h2>
+    <form class="row" id="searchForm">
+        <input type="text" class="form-control" placeholder="Enter application name" id="application">
+        <input type="text" class="form-control mt-3" id="searchTerms"
+            placeholder="Enter Search terms (case insensitive) [comma separated, e.g. error,nullpointerexception]">
+
+        <!-- Add datepicker relative -->
+        <div class="col-2">
+            <label for="timerangeValue">Last</label>
+            <input type="number" class="form-control" value="15" id="timerangeValue">
+        </div>
+        <div class="col-2">
+            <select class="form-select mt-3 col-4" id="timerangeMode">
+                <option value="m">Minutes</option>
+                <option value="h">Hours</option>
+                <option value="d">Days</option>
+            </select>
+        </div>
+        <button class="btn btn-success" type="button" id="searchButton">
+            Search
+        </button>
+    </form>
+    <hr class="my-4">
+    <div class="log-div">
+        <pre id="log-pre">
+            <div class="log-item">
+                <span><i>Timestamp:</i> Logline</span>
+            </div>
+        </pre>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+    const searchUrl = "{% url 'execute_search' %}"
+</script>
+<script src="{% static 'search.js' %}"></script>
+{% endblock %}

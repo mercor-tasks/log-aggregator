@@ -1,0 +1,6 @@
+{
+    "log-server": {
+        "host": "<LOG_SERVER_HOST>",
+        "search-endpoint": "<LOG_SERVER_SEARCH_ENDPOINT>"
+    }
+}
